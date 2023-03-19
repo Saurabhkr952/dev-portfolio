@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v3
         with: 
           repository: saurabhkr952/dev-portfolio-manifest
-          ref: 'main'
+          ref: 'master'
           token: ${{ secrets.G_TOKEN }}
       - name: setup git config
         run: |
