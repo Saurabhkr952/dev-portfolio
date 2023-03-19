@@ -41,6 +41,6 @@ jobs:
           echo ${{ github.sha }}
           sed -i 's+saurabhkr952/dev-portfolio:.*+saurabhkr952/dev-portfolio:${{ github.sha }}+g' deployment.yaml
           git add -A
-          git commit -am "Update image for - ${{ github.sha }}"
+          git commit -m "Update image for - ${{ github.sha }}"
       - run: echo ${{ github }}
-      - run: git push origin master
+      - run: git push origin main
