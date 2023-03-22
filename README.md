@@ -12,7 +12,7 @@ This web-application is designed/created by [Adrian Hajdin](https://github.com/a
 <p align="left">➡️ Github Actions 
 <p align="left">➡️ Docker
 <p align="left">➡️ Kubernetes
-<p align="left">➡️Argo CD
+<p align="left">➡️ Argo CD
 
 
 
