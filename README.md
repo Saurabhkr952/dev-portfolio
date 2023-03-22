@@ -9,11 +9,11 @@ https://user-images.githubusercontent.com/32189783/226803028-acff9c6d-dddf-4c77-
 # This diagram represents a continuous integration and delivery (CI/CD) pipeline for this project.
 
 ## TechStack Used:
-➡️ Git
-➡️ Github Actions
-➡️ Docker
-➡️ Kubernetes
-➡️ Argo CD
+➡️Git
+➡️Github Actions
+➡️Docker
+➡️Kubernetes
+➡️Argo CD
 
 
 
