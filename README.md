@@ -11,9 +11,9 @@ https://user-images.githubusercontent.com/32189783/226803028-acff9c6d-dddf-4c77-
 ## TechStack Used:
 <p align="left">➡️ Git
 <p align="left">➡️ Github Actions
-➡️Docker
-➡️Kubernetes
-➡️Argo CD
+<p align="left">➡️ Docker
+<p align="left">➡️ Kubernetes
+<p align="left">➡️Argo CD
 
 
 
