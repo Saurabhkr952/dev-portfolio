@@ -22,3 +22,12 @@
 
 Kubernetes Manifest Repository: https://github.com/Saurabhkr952/dev-portfolio-manifest
   
+Here are the steps how it works:
+1. Developers push the code to the Github repository.
+2. Github Actions automatically starts a workflow when new  code is pushed to the repository.
+3. The workflow starts by checking out the code and building the Docker image for the React application.
+4. After the Docker image is built, Github Actions pushes the image to DockerHub.
+5. Github Actions then updates the Kubernetes manifests stored in the Git repository with the new Docker image tag.
+6. ArgoCD continuously monitors the Git repository for changes and updates the Kubernetes objects accordingly.
+7. Once ArgoCD detects the changes, it deploys the updated application to the Kubernetes cluster.
+  
