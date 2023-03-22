@@ -2,7 +2,8 @@
 
 
 
-https://user-images.githubusercontent.com/32189783/226803028-acff9c6d-dddf-4c77-91dc-9e6d2c5156e9.mp4
+<img width="250" alt="vlc_KSWDFf6SkR" src="https://user-images.githubusercontent.com/32189783/226804537-bab19827-2b5e-453b-86ec-b9c0db25679d.png">
+
 
 
 
@@ -21,5 +22,5 @@ https://user-images.githubusercontent.com/32189783/226803028-acff9c6d-dddf-4c77-
 
 ![cicd github actions project diagram](https://user-images.githubusercontent.com/32189783/226803395-6f7d3c2c-e72e-48aa-aa2f-f1f8f5bf74a4.jpg)
 
-Kubernetes Manifest Repository:[https://github.com/Saurabhkr952/dev-portfolio-manifest]
+Kubernetes Manifest Repository: https://github.com/Saurabhkr952/dev-portfolio-manifest
   
