@@ -2,9 +2,7 @@
 
 
 
-<img width="720" alt="vlc_KSWDFf6SkR" src="https://user-images.githubusercontent.com/32189783/226804537-bab19827-2b5e-453b-86ec-b9c0db25679d.png">
-
-
+<img width="720" alt="vlc_KSWDFf6SkR" src="https://user-images.githubusercontent.com/32189783/226804882-d66ba1ab-7c80-424a-b6fd-bd0d1abb9de9.png">
 
 
 # This diagram represents a continuous integration and delivery (CI/CD) pipeline for this project.
