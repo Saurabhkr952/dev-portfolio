@@ -2,7 +2,7 @@
 
 
 
-<img width="250" alt="vlc_KSWDFf6SkR" src="https://user-images.githubusercontent.com/32189783/226804537-bab19827-2b5e-453b-86ec-b9c0db25679d.png">
+<img width="720" alt="vlc_KSWDFf6SkR" src="https://user-images.githubusercontent.com/32189783/226804537-bab19827-2b5e-453b-86ec-b9c0db25679d.png">
 
 
 
