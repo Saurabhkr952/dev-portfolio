@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
 jobs:
-  build-and-push docker image to ECR:
+  build-and-push-docker-image-to-ECR:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -23,7 +23,7 @@ jobs:
         
   update-k8s-manifest:
     runs-on: ubuntu-latest 
-    needs: ['build-and-push docker image to ECR']
+    needs: ['build-and-push-docker-image-to-ECR']
     steps:
       - uses: actions/checkout@v3
         with: 
