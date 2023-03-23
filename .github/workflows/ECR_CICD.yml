@@ -1,0 +1,37 @@
+jobs:
+  build-and-push Docker image to ECR:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: docker://ghcr.io/kciter/aws-ecr-action:latest
+      with:
+        access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+        repo: react-app
+        region: ap-south-1
+        tags: ${{ github.sha }}
+        create_repo: true
+        image_scanning_configuration: true
+        set_repo_policy: true
+        repo_policy_file: repo-policy.json
+        
+  update- k8s-manifest:
+    runs-on: ubuntu-latest 
+    needs: ['build-and-push Docker image to ECR']
+    steps:
+      - uses: actions/checkout@v3
+        with: 
+          repository: saurabhkr952/dev-portfolio-manifest
+          ref: 'main'
+          token: ${{ secrets.G_TOKEN }}
+      - name: setup git config
+        run: |
+          git config --global user.email "saurabhkr952@gmail.com"
+          git config --global user.name "saurabhkr952"
+          echo ${{ github.sha }}
+          sed -i 's+278445542791.dkr.ecr.ap-south-1.amazonaws.com/react-app:.*+278445542791.dkr.ecr.ap-south-1.amazonaws.com/react-app:${{ github.sha }}+g' deployment.yaml
+          git add -A
+          git commit -m "Update image for - ${{ github.sha }}"
+      - run: echo ${{ github }}
+      - run: git push origin main
