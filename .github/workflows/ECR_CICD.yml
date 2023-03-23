@@ -1,4 +1,3 @@
-
 name: Deploy to ECR
 
 on:
@@ -7,11 +6,8 @@ on:
     branches: [ master ]
 
 jobs:
-  build-and-push-docker-image-to-ECR
-  
-  build:
-    
-    name: Build Image
+  build-and-push-docker-image-to-ECR:
+
     runs-on: ubuntu-latest
 
    
@@ -28,17 +24,17 @@ jobs:
         aws-region: ap-south-1
 
     - name: Login to Amazon ECR
-      id: ${{ secrets.AWS_ACCOUNT_ID }}
+      id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build, tag, and push image to Amazon ECR
       env:
-        ECR_REGISTRY: 278445542791.dkr.ecr.ap-south-1.amazonaws.com/react-app
+        ECR_REGISTRY: ${{ 278445542791.dkr.ecr.ap-south-1.amazonaws.com }}
         ECR_REPOSITORY: react-app
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker build -t 278445542791.dkr.ecr.ap-south-1.amazonaws.com/react-app/react-app:${{ github.sha }} .
-        docker push 278445542791.dkr.ecr.ap-south-1.amazonaws.com/react-app/react-app:${{ github.sha }}
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
   update-k8s-manifest:
     runs-on: ubuntu-latest 
