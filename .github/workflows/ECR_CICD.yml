@@ -7,7 +7,7 @@ jobs:
   build-and-push-docker-image-to-ECR:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: kciter/aws-ecr-action@v4
     - uses: docker://ghcr.io/kciter/aws-ecr-action:latest
       with:
         access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
