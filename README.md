@@ -1,5 +1,5 @@
 # dev-portfolio 
-This is designed/created by [Adrian Hajdin](https://github.com/adrianhajdin) 
+This website is designed/created by [Adrian Hajdin](https://github.com/adrianhajdin) 
 
 
 <img width="720" alt="vlc_KSWDFf6SkR" src="https://user-images.githubusercontent.com/32189783/226804882-d66ba1ab-7c80-424a-b6fd-bd0d1abb9de9.png">
