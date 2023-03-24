@@ -17,7 +17,7 @@ jobs:
           account_id: ${{ secrets.AWS_ACCOUNT_ID }}
           repo: react-app
           region: ap-south-1
-          tags: latest,${{ github.sha }}
+          tags: ${{ github.sha }}
           create_repo: true
         
   update-k8s-manifest:
