@@ -12,9 +12,9 @@ jobs:
       - uses: actions/checkout@v1
       - uses: vitr/actions-build-and-upload-to-ecs@master
         with:
-          access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}                    // AWS_ACCESS_KEY_ID
-          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}            // AWS_SECRET_ACCESS_KEY
-          account_id: ${{ secrets.AWS_ACCOUNT_ID }}                          // AWS_ACCOUNT_ID
+          access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}                    # AWS_ACCESS_KEY_ID
+          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}            # AWS_SECRET_ACCESS_KEY
+          account_id: ${{ secrets.AWS_ACCOUNT_ID }}                          # AWS_ACCOUNT_ID
           repo: react-app
           region: ap-south-1
           tags: ${{ github.sha }}
@@ -28,7 +28,7 @@ jobs:
         with: 
           repository: saurabhkr952/dev-portfolio-manifest
           ref: 'main'
-          token: ${{ secrets.G_TOKEN }}                                     // Github Personal Access Token
+          token: ${{ secrets.G_TOKEN }}                                       # Github Personal Access Token
       - name: setup git config
         run: |
           git config --global user.email "saurabhkr952@gmail.com"
