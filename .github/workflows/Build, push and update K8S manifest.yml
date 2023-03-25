@@ -33,7 +33,7 @@ jobs:
         with: 
           repository: saurabhkr952/dev-portfolio-manifest
           ref: 'main'
-          token: ${{ secrets.G_TOKEN }}                               // github Personal Access Token
+          token: ${{ secrets.G_TOKEN }}                               // Github Personal Access Token
       - name: setup git config
         run: |
           git config --global user.email "saurabhkr952@gmail.com"
