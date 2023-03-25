@@ -22,8 +22,8 @@ jobs:
           tags: ${{ github.sha }}
           registry: docker.io
           dockerfile: Dockerfile
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ secrets.DOCKER_USERNAME }}                     // Dockerhub password
+          password: ${{ secrets.DOCKER_PASSWORD }}                     // Dockerhub username
 
   update-manifest:
     runs-on: ubuntu-latest 
@@ -33,7 +33,7 @@ jobs:
         with: 
           repository: saurabhkr952/dev-portfolio-manifest
           ref: 'main'
-          token: ${{ secrets.G_TOKEN }}
+          token: ${{ secrets.G_TOKEN }}                               // github personal access token
       - name: setup git config
         run: |
           git config --global user.email "saurabhkr952@gmail.com"
