@@ -17,7 +17,6 @@ This website is designed/created by [Adrian Hajdin](https://github.com/adrianhaj
 
 
 
-
 ![cicd github actions project diagram](https://user-images.githubusercontent.com/32189783/226803395-6f7d3c2c-e72e-48aa-aa2f-f1f8f5bf74a4.jpg)
 
   
