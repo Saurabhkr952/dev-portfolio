@@ -1,0 +1,99 @@
+name: Multi-Stage Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+    
+  # schedule:
+  #   - cron: '26 15 * * 3'
+
+permissions:
+  contents: read 
+  security-events: write 
+  actions: read 
+
+jobs:
+  build:                               # This job builds and pushes the Docker image to Docker Hub.
+    name: Build and Push Docker Image
+    runs-on: "ubuntu-20.04"
+    steps:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}                          
+          password: ${{ secrets.DOCKERHUB_TOKEN }}                             
+      
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: saurabhkr952/go-app:${{ github.sha }}                
+
+  scan_upload: #This job checks the vulnerability of the Container Vulnerability Check & Upload it.
+    name: Container Vulnerability Check                           
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
+        with:
+          image-ref: 'docker.io/saurabhkr952/go-app:${{ github.sha }}'    
+          format: 'template'
+          template: '@/contrib/sarif.tpl'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'       
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  update_manifest:          # this job will update the kubernetes manifest files image version tag
+    runs-on: ubuntu-latest 
+    needs:
+      - build
+      - scan_upload
+    steps:
+      - uses: actions/checkout@v3
+        with: 
+          repository: saurabhkr952/dev-portfolio-manifest   
+          ref: 'main'
+          token: ${{ secrets.PAT_TOKEN }}                   
+      - name: setup git config
+        run: |
+          git config --local user.email "saurabhkr952@gmail.com"  
+          git config --local user.name "saurabhkr952"
+          echo ${{ github.sha }}
+          sed -i 's+saurabhkr952/dev-portfolio:.*+saurabhkr952/dev-portfolio:${{ github.sha }}+g' deployment.yaml                          
+          git add -A
+          git commit -m "update image tag for - ${{ github.sha }}"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT_TOKEN }}
+          repository: saurabhkr952/dev-portfolio-manifest   
+          force: true  
+          
+  slack-workflow-status: #  send the status of the workflow that it is success,failed or cancelled
+    if: always()
+    name: Post Workflow Status To Slack
+    needs:
+      - build
+      - scan_upload
+      - update_manifest
+    runs-on: ubuntu-latest
+    permissions:
+      actions: 'read'
+    steps:
+      - name: Slack Workflow Notification
+        uses: Gamesight/slack-workflow-status@master
+        with:
+          repo_token: ${{ secrets.PAT_TOKEN }}                          
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}    
+          channel: '#github-workflow'                                   
+          name: 'CI/CD Workflow Status'                            
+          icon_emoji: ':repeat:'
+          icon_url: 'https://avatars0.githubusercontent.com/u/1701160?s=96&v=4'
