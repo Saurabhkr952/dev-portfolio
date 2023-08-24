@@ -105,13 +105,13 @@ Here's how the CI/CD pipeline works:
 6. **Argo CD** continuously monitors the Git repository and updates the application version in the Kubernetes cluster.   
 7. Security vulnerabilities are reported and can be reviewed in the security tab.
    ![Security Vulnerabilities](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/f0ce9f6d-ae90-48ef-9fad-82b3ef3e0e5e.png)
-   *Click to enlarge*
+   
 8. After the workflow is successfully completed, the status is reflected as shown below:
    ![cicd pipeline status](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/1634442e-2d86-4593-8e03-ad0e1614a6af)
-   *Click to enlarge*   
+    
 9. Notifications are sent to **Slack** to provide information about the workflow status.
    ![Workflow Status](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/d4b5490c-b4d9-4607-a999-d371c7c0afc5.png)
-   *Click to enlarge*
+  
    
 ## Kubernetes Manifest Repository: [dev-portfolio-manifest](https://github.com/Saurabhkr952/dev-portfolio-manifest)
 
