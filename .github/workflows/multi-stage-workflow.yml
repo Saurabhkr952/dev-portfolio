@@ -93,7 +93,7 @@ jobs:
         with:
           repo_token: ${{ secrets.PAT_TOKEN }}                          
           slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}    
-          channel: '#github-workflow'                                   
+          channel: '#general'                                   
           name: 'CI/CD Workflow Status'                            
           icon_emoji: ':repeat:'
           icon_url: 'https://avatars0.githubusercontent.com/u/1701160?s=96&v=4'
