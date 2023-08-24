@@ -42,8 +42,11 @@ To set up the workflow, follow these steps and modify the appropriate lines in t
 
 4. **Slack Workflow Status Job:**
    Navigate to the `slack-workflow-status` job section and make the following changes:
-   - **Line 95:** Replace `${{ secrets.SLACK_WEBHOOK_URL }}` with your SLACK WEBHOOK URL.
    - **Line 96:** Replace `#general` with your channel name.
+
+
+To add the necessary secrets, navigate to the repository's settings, then access the 'Secrets and Variables' section within the security settings. From there, proceed to the 'Actions' subsection.
+<img width="508" alt="115" src="https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/a9112bd5-9af9-4165-bbd1-287772a39082">
 
 
   
