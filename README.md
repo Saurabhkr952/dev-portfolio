@@ -20,7 +20,7 @@ The **Dev Portfolio** project focuses on creating a portfolio website. This READ
 
 This website is Designed/Created by [Adrian Hajdin](https://github.com/adrianhajdin).
 
-<img width="720" alt="vlc_KSWDFf6SkR" src="https://user-images.githubusercontent.com/32189783/226804882-d66ba1ab-7c80-424a-b6fd-bd0d1abb9de9.png"
+![dev-portfolio website]([path/to/your/optimized.gif](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/9b840485-5588-4e4d-92e5-742801a5a149))
 
 
 ## Continuous Integration and Delivery (CI/CD) Pipeline
