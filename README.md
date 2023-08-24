@@ -45,21 +45,27 @@ To set up the workflow, follow these steps and modify the appropriate lines in t
    - **Line 96:** Replace `#general` with your channel name.
 
 
-##To add the necessary secrets, navigate to the repository's settings, then access the 'Secrets and Variables' section within the security settings. From there, proceed to the 'Actions' subsection.
+## Adding Secrets
 
-<img width="508" alt="115" src="https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/a9112bd5-9af9-4165-bbd1-287772a39082">
+To add the necessary secrets, follow these steps:
+1. Go to the repository settings.
+2. Under the security settings, access the 'Secrets and Variables' section.
+3. Inside the 'Secrets and Variables' section, proceed to the 'Actions' subsection.
+
+![Add Secrets](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/a9112bd5-9af9-4165-bbd1-287772a39082)
 
 
   
-Here are the steps how it works:
-1. Developers push the code to the Github repository.
-2. Github Actions automatically starts a workflow when new  code is pushed to the repository.
-3. The workflow starts by checking out the code and building the Docker image for the React application.
-4. After the Docker image is built, GitHub Actions pushes the image to DockerHub.
-5. Github Actions then updates the Kubernetes manifests stored in the Git repository with the new Docker image tag.
-6. ArgoCD continuously monitors the Git repository for changes and updates the Kubernetes objects accordingly.
-7. Once ArgoCD detects the changes, it deploys the updated application to the Kubernetes cluster.
+## Workflow Steps
+
+Here's how the CI/CD pipeline works:
+1. Developers push the code to the GitHub repository.
+2. GitHub Actions automatically triggers a workflow when new code is pushed.
+3. The workflow checks out the code and builds the Docker image for the React application.
+4. Once the Docker image is built, GitHub Actions pushes it to DockerHub.
+5. The workflow then updates the Kubernetes manifests in the Git repository with the new Docker image tag.
+6. Argo CD continuously monitors the Git repository for changes and updates the Kubernetes objects accordingly.
+7. Once Argo CD detects changes, it deploys the updated application to the Kubernetes cluster.
   
-  
-  Kubernetes Manifest Repository: https://github.com/Saurabhkr952/dev-portfolio-manifest
+Kubernetes Manifest Repository: [dev-portfolio-manifest](https://github.com/Saurabhkr952/dev-portfolio-manifest)
   
