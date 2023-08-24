@@ -18,7 +18,9 @@ This README provides a comprehensive guide on setting up the **Dev Portfolio** p
 
 The **Dev Portfolio** project focuses on creating a portfolio website. This README guides you through setting up the project's infrastructure, implementing a **robust CI/CD pipeline**, and ensuring **security measures** are in place.
 
-[Adrian Hajdin](https://github.com/adrianhajdin) 
+This website is Designed/Created by [Adrian Hajdin](https://github.com/adrianhajdin).
+
+![cicd github actions project diagram](https://user-images.githubusercontent.com/32189783/226803395-6f7d3c2c-e72e-48aa-aa2f-f1f8f5bf74a4.jpg)
 
 
 ## Continuous Integration and Delivery (CI/CD) Pipeline
@@ -93,14 +95,39 @@ Refer to the [official Argo CD documentation](https://argo-cd.readthedocs.io/en/
   
 ## Workflow Steps
 
+## Workflow Steps
+
+Here's how the CI/CD pipeline works:
+
 1. Developers push code to the GitHub repository.
 2. GitHub Actions automatically triggers a workflow when new code is pushed.
 3. The workflow starts by building the Docker image and then pushing it to DockerHub.
+
+   ![Job CI/CD Successful](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/3b3d6353-1d14-46f1-bea0-25e0e65db148.png)
+   *Click to enlarge*
+   
 4. After the Docker image is successfully pushed, the workflow scans the container for vulnerabilities.
+
+   ![Security Vulnerabilities](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/f0ce9f6d-ae90-48ef-9fad-82b3ef3e0e5e.png)
+   *Click to enlarge*
+   
 5. Following the vulnerability scan, the workflow updates the Kubernetes manifests in the Git repository with the new image tag.
-6. **Argo CD** continuously monitors the Git repository for changes and updates the application version in the Kubernetes cluster.
+6. **Argo CD** continuously monitors the Git repository and updates the application version in the Kubernetes cluster.
+
+   ![Workflow Status](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/d4b5490c-b4d9-4607-a999-d371c7c0afc5.png)
+   *Click to enlarge*
+   
 7. Security vulnerabilities are reported and can be reviewed in the security tab.
 8. Notifications are sent to **Slack** to provide information about the workflow status.
-  
+
 Kubernetes Manifest Repository: [dev-portfolio-manifest](https://github.com/Saurabhkr952/dev-portfolio-manifest)
+
+
+10. Notifications are sent to **Slack** to provide information about the workflow status.
+  
+## Kubernetes Manifest Repository: [dev-portfolio-manifest](https://github.com/Saurabhkr952/dev-portfolio-manifest)
+
+## Work in Progress
+
+Please note that this repository is a work in progress. Some sections and features may still be under development.
   
