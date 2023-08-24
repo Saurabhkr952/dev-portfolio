@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: saurabhkr952/go-app:${{ github.sha }}                
+          tags: saurabhkr952/dev-portfolio:${{ github.sha }}                
 
   scan_upload: #This job checks the vulnerability of the Container Vulnerability Check & Upload it.
     name: Container Vulnerability Check                           
@@ -40,7 +40,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
         with:
-          image-ref: 'docker.io/saurabhkr952/go-app:${{ github.sha }}'    
+          image-ref: 'docker.io/saurabhkr952/dev-portfolio:${{ github.sha }}'    
           format: 'template'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
