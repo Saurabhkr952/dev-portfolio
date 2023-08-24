@@ -97,6 +97,10 @@ Refer to the [official Argo CD documentation](https://argo-cd.readthedocs.io/en/
 
 Here's how the CI/CD pipeline works:
 
+## Workflow Steps
+
+Here's how the CI/CD pipeline works:
+
 1. Developers push code to the GitHub repository.
 2. GitHub Actions automatically triggers a workflow when new code is pushed.
 3. The workflow starts by building the Docker image and then pushing it to DockerHub.  
@@ -111,6 +115,7 @@ Here's how the CI/CD pipeline works:
     
 9. Notifications are sent to **Slack** to provide information about the workflow status.
    ![Workflow Status](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/d4b5490c-b4d9-4607-a999-d371c7c0afc5.png)
+
   
    
 ## Kubernetes Manifest Repository: [dev-portfolio-manifest](https://github.com/Saurabhkr952/dev-portfolio-manifest)
