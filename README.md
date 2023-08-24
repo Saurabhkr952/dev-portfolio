@@ -1,23 +1,53 @@
-# dev-portfolio 
-This website is designed/created by [Adrian Hajdin](https://github.com/adrianhajdin) 
+# Project Documentation: Dev Portfolio
+
+This README provides a comprehensive guide on setting up the **Dev Portfolio** project, showcasing robust **DevOps** practices. The project involves provisioning an **AWS EKS** cluster using **Terraform**, implementing a **CI/CD pipeline** with **GitHub Actions**, **Docker**, **Kubernetes**, and **Argo CD**, and ensuring security best practices are followed.
+
+## Table of Contents
+- [Overview](#overview)
+- [Continuous Integration and Delivery (CI/CD) Pipeline](#continuous-integration-and-delivery-cicd-pipeline)
+- [Prerequisites](#prerequisites)
+- [Setup Instructions](#setup-instructions)
+   - [Provision AWS EKS Cluster](#provision-aws-eks-cluster)
+   - [Configure GitHub Actions Workflow](#configure-github-actions-workflow)
+   - [Add Secrets](#add-secrets)
+   - [Install Argo CD on EKS](#install-argo-cd-on-eks)
+- [Workflow Steps](#workflow-steps)
+- [Conclusion](#conclusion)
+
+## Overview
+
+The **Dev Portfolio** project focuses on creating a portfolio website. This README guides you through setting up the project's infrastructure, implementing a **robust CI/CD pipeline**, and ensuring **security measures** are in place.
+
+[Adrian Hajdin](https://github.com/adrianhajdin) 
 
 
-<img width="720" alt="vlc_KSWDFf6SkR" src="https://user-images.githubusercontent.com/32189783/226804882-d66ba1ab-7c80-424a-b6fd-bd0d1abb9de9.png">
+## Continuous Integration and Delivery (CI/CD) Pipeline
+
+The diagram below illustrates the **CI/CD pipeline** used in this project:
+
+![CI/CD Pipeline Diagram](https://user-images.githubusercontent.com/32189783/226803395-6f7d3c2c-e72e-48aa-aa2f-f1f8f5bf74a4.jpg)
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+- **AWS account**
+- **Terraform** installed
+- **Docker Hub account**
+- **GitHub account**
+- **Slack account** (for notifications)
+
+## Setup Instructions
+
+### Provision AWS EKS Cluster (work in progress)
+
+1. Clone the project repository: `git clone https://github.com/Saurabhkr952/dev-portfolio.git`
+2. Navigate to the `terraform` directory: `cd dev-portfolio/terraform`
+3. Modify the Terraform configuration files to match your environment.
+4. Run `terraform init` and `terraform apply` to provision the **EKS cluster**.
 
 
-# This diagram represents a continuous integration and delivery (CI/CD) pipeline for this project.
-
-## TechStack Used:
-<p align="left">➡️ Git
-<p align="left">➡️ Github Actions 
-<p align="left">➡️ Docker
-<p align="left">➡️ Kubernetes
-<p align="left">➡️ Argo CD
-
-
-![cicd github actions project diagram](https://user-images.githubusercontent.com/32189783/226803395-6f7d3c2c-e72e-48aa-aa2f-f1f8f5bf74a4.jpg)
-
-## Workflow Configuration
+### Configure GitHub Actions Workflow
 
 To set up the workflow, follow these steps and modify the appropriate lines in the provided workflow file (`./.github/workflows/multi-stage-workflow.yml`):
 
@@ -45,7 +75,7 @@ To set up the workflow, follow these steps and modify the appropriate lines in t
    - **Line 96:** Replace `#general` with your channel name.
 
 
-## Adding Secrets
+## Add Secrets
 
 To add the necessary secrets, follow these steps:
 1. Go to the repository settings.
@@ -55,22 +85,22 @@ To add the necessary secrets, follow these steps:
    - `DOCKERHUB_USERNAME`: Your DockerHub username.
    - `DOCKERHUB_TOKEN`: Your DockerHub password.
    - `PAT_TOKEN`: Your GitHub Personal Access Token.
-   - `SLACK_WEBHOOK_URL`: Your Slack webhook URL. Refer to this [guide](https://devopseasyinitiate.hashnode.dev/how-to-get-slack-webhook-url) on how to obtain the URL.
+   - `SLACK_WEBHOOK_URL`: Your Slack webhook URL.    Refer to this [guide](https://devopseasyinitiate.hashnode.dev/how-to-get-slack-webhook-url) on how to obtain the URL.
+     
+### Install Argo CD on EKS
 
-<img src="https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/a9112bd5-9af9-4165-bbd1-287772a39082" alt="Add Secrets" width="400">
-
-
+Refer to the [official Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/) to install Argo CD on your **EKS cluster**.
   
 ## Workflow Steps
 
-Here's how the CI/CD pipeline works:
-1. Developers push the code to the GitHub repository.
+1. Developers push code to the GitHub repository.
 2. GitHub Actions automatically triggers a workflow when new code is pushed.
-3. The workflow checks out the code and builds the Docker image for the React application.
-4. Once the Docker image is built, GitHub Actions pushes it to DockerHub.
-5. The workflow then updates the Kubernetes manifests in the Git repository with the new Docker image tag.
-6. Argo CD continuously monitors the Git repository for changes and updates the Kubernetes objects accordingly.
-7. Once Argo CD detects changes, it deploys the updated application to the Kubernetes cluster.
+3. The workflow starts by building the Docker image and then pushing it to DockerHub.
+4. After the Docker image is successfully pushed, the workflow scans the container for vulnerabilities.
+5. Following the vulnerability scan, the workflow updates the Kubernetes manifests in the Git repository with the new image tag.
+6. **Argo CD** continuously monitors the Git repository for changes and updates the application version in the Kubernetes cluster.
+7. Security vulnerabilities are reported and can be reviewed in the security tab.
+8. Notifications are sent to **Slack** to provide information about the workflow status.
   
 Kubernetes Manifest Repository: [dev-portfolio-manifest](https://github.com/Saurabhkr952/dev-portfolio-manifest)
   
