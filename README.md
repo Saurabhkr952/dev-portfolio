@@ -32,7 +32,7 @@ To set up the workflow, follow these steps and modify the appropriate lines in t
 3. **Update Manifest Job:**
    Navigate to the `update_manifest` job section and make the following changes:
    - **Line 62:** Replace `saurabhkr952/dev-portfolio-manifest` with your manifest repository name.
-   - **Line 42:** Replace `saurabhkr952/dev-portfolio:.*` with the appropriate image reference.
+   - **Line 42:** Replace `saurabhkr952/dev-portfolio` with the appropriate image reference.
    - **Line 67:** Replace `saurabhkr952@gmail.com` with your GitHub Gmail.
    - **Line 68:** Replace `saurabhkr952` with your GitHub username.
    - **Line 70:** Replace `saurabhkr952/dev-portfolio` with your docker image at both place.
