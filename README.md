@@ -57,7 +57,7 @@ To add the necessary secrets, follow these steps:
    - `PAT_TOKEN`: Your GitHub Personal Access Token.
    - `SLACK_WEBHOOK_URL`: Your Slack webhook URL. Refer to this [guide](https://devopseasyinitiate.hashnode.dev/how-to-get-slack-webhook-url) on how to obtain the URL.
 
-![Add Secrets](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/a9112bd5-9af9-4165-bbd1-287772a39082)
+<img src="https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/a9112bd5-9af9-4165-bbd1-287772a39082" alt="Add Secrets" width="400">
 
 
   
