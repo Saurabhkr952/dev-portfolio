@@ -92,10 +92,6 @@ To add the necessary secrets, follow these steps:
 ### Install Argo CD on EKS
 
 Refer to the [official Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/) to install Argo CD on your **EKS cluster**.
-  
-## Workflow Steps
-
-Here's how the CI/CD pipeline works:
 
 ## Workflow Steps
 
