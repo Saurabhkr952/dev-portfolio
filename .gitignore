@@ -27,3 +27,13 @@ dist-ssr
 
 # vscode
 .vscode
+
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Ignore .terraform directory
+.terraform/
+
+# Ignore the terraform.lock.hcl file
+terraform.lock.hcl
