@@ -151,7 +151,7 @@ Here's a preview of a Grafana dashboard monitoring the Kubernetes cluster:
 
 Kubecost is used for Kubernetes cost allocation and resource management.
 
-![Cost Management]([https://example.com/grafana-dashboard.gif](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/0c25b53e-5c65-464f-834d-07654543a635))
+![Cost Management](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/0c25b53e-5c65-464f-834d-07654543a635)
   
 
 ## Kubernetes Manifest Repository: [dev-portfolio-manifest](https://github.com/Saurabhkr952/dev-portfolio-manifest)
