@@ -145,7 +145,9 @@ Here's how the CI/CD pipeline works:
 Here's a preview of a Grafana dashboard monitoring the Kubernetes cluster:
 
 ![Grafana Dashboard]
-//
+
+![ezgif com-video-to-gif (2)](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/aefbaf2c-e1c7-437d-8726-041f78951660)
+
 
 ### Cost Management
 
