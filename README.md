@@ -12,7 +12,9 @@ This README provides a comprehensive guide on setting up the **Dev Portfolio** p
    - [Add Secrets](#add-secrets)
    - [Install Argo CD on EKS](#install-argo-cd-on-eks)
 - [Workflow Steps](#workflow-steps)
-- [Conclusion](#conclusion)
+- [Monitoring and Visualization](#monitoring-and-visualization)
+- [Cost Management](#cost-management)
+
 
 ## Overview
 
@@ -20,7 +22,26 @@ The **Dev Portfolio** project focuses on creating a portfolio website. This READ
 
 This website is Designed/Created by [Adrian Hajdin](https://github.com/adrianhajdin).
 
-![dev-portfolio website](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/9b840485-5588-4e4d-92e5-742801a5a149)
+<img src="https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/9b840485-5588-4e4d-92e5-742801a5a149" alt="dev-portfolio website" width="800" height="480" />
+
+## Tech Stack
+
+The **Dev Portfolio** project is built using a variety of tools and technologies to ensure robust development, deployment, and monitoring practices. Here's a list of the key technologies and tools used:
+
+<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="60" />     
+<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/docker-original-wordmark.svg" alt="Docker" height="60" />  
+<img style="margin: 10px" src="https://aquasecurity.github.io/trivy/dev/imgs/logo.png" alt="Trivy Scanner" height="60" />
+<img style="margin: 10px" src=https://seeklogo.com/images/G/github-actions-logo-031704BDC6-seeklogo.com.png alt="Github Actions" height="60" />
+<img style="margin: 10px" src="https://coralogix.com/wp-content/uploads/2021/06/Argo-CD-Version-Tags-1000X1000.png" alt="Argo CD" height="70" />
+<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/terraformio-icon.svg" alt="Terraform" height="60" />
+<img style="margin: 10px" src="https://www.sophos.com/sites/default/files/2022-02/aws-logo-white-orange.png" alt="AWS" height="60" />
+<img style="margin: 10px" src="https://static-00.iconduck.com/assets.00/amazon-eks-icon-455x512-0zairb3r.png" alt="Amazon EKS" height="60" />
+<img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/2066px-Prometheus_software_logo.svg.png" alt="Prometheus" height="60" />
+<img style="margin: 10px" src="https://w7.pngwing.com/pngs/434/923/png-transparent-grafana-hd-logo.png" alt="grafana" height="60" />
+<img style="margin: 10px" src="https://ml.globenewswire.com/Resource/Download/67776224-155c-4a51-aa8d-d27d761b30ee" alt="Kubecost" height="60" />
+
+
+This selection of tools and technologies collectively highlights a modern approach to DevOps practices, encompassing development, deployment, security, and monitoring.
 
 
 ## Continuous Integration and Delivery (CI/CD) Pipeline
@@ -41,7 +62,7 @@ Before you begin, ensure you have the following:
 
 ## Setup Instructions
 
-### Provision AWS EKS Cluster (work in progress)
+### Provision AWS EKS Cluster
 
 1. Clone the project repository: `git clone https://github.com/Saurabhkr952/dev-portfolio.git`
 2. Navigate to the `terraform` directory: `cd dev-portfolio/terraform`
@@ -112,11 +133,23 @@ Here's how the CI/CD pipeline works:
 9. Notifications are sent to **Slack** to provide information about the workflow status.
    ![Workflow Status](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/d4b5490c-b4d9-4607-a999-d371c7c0afc5.png)
 
+
+## Monitoring and Visualization
+
+### For monitoring and visualization, the following tools are utilized:
+
+`Prometheus` and `Grafana`. Prometheus serves as the data source for Grafana, enabling the visualization of metrics and performance data. A Grafana dashboard is employed to monitor the Kubernetes cluster using data collected by Prometheus. 
+
+Here's a preview of a Grafana dashboard monitoring the Kubernetes cluster:
+
+![Grafana Dashboard]
+//
+
+### Cost Management
+
+Kubecost is used for Kubernetes cost allocation and resource management.
+
+![Cost Management]([https://example.com/grafana-dashboard.gif](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/0c25b53e-5c65-464f-834d-07654543a635))
   
-   
+
 ## Kubernetes Manifest Repository: [dev-portfolio-manifest](https://github.com/Saurabhkr952/dev-portfolio-manifest)
-
-## Work in Progress
-
-Please note that this repository is a work in progress. Some sections and features may still be under development.
-  
