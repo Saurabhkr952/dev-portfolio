@@ -144,7 +144,7 @@ Here's how the CI/CD pipeline works:
 
 Here's a preview of a Grafana dashboard monitoring the Kubernetes cluster:
 
-![Grafana Dashboard](dev-portfolio/assets/grafana-dashboard.gif)
+![Grafana Dashboard](assets/grafana-dashboard.gif)
 
 
 
