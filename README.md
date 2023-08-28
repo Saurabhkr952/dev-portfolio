@@ -28,17 +28,19 @@ This website is Designed/Created by [Adrian Hajdin](https://github.com/adrianhaj
 
 The **Dev Portfolio** project is built using a variety of tools and technologies to ensure robust development, deployment, and monitoring practices. Here's a list of the key technologies and tools used:
 
-<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="60" />     
-<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/docker-original-wordmark.svg" alt="Docker" height="60" />  
-<img style="margin: 10px" src="https://aquasecurity.github.io/trivy/dev/imgs/logo.png" alt="Trivy Scanner" height="60" />
-<img style="margin: 10px" src=https://seeklogo.com/images/G/github-actions-logo-031704BDC6-seeklogo.com.png alt="Github Actions" height="60" />
-<img style="margin: 10px" src="https://coralogix.com/wp-content/uploads/2021/06/Argo-CD-Version-Tags-1000X1000.png" alt="Argo CD" height="70" />
-<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/terraformio-icon.svg" alt="Terraform" height="60" />
-<img style="margin: 10px" src="https://www.sophos.com/sites/default/files/2022-02/aws-logo-white-orange.png" alt="AWS" height="60" />
-<img style="margin: 10px" src="https://static-00.iconduck.com/assets.00/amazon-eks-icon-455x512-0zairb3r.png" alt="Amazon EKS" height="60" />
-<img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/2066px-Prometheus_software_logo.svg.png" alt="Prometheus" height="60" />
-<img style="margin: 10px" src="https://w7.pngwing.com/pngs/434/923/png-transparent-grafana-hd-logo.png" alt="grafana" height="60" />
-<img style="margin: 10px" src="https://ml.globenewswire.com/Resource/Download/67776224-155c-4a51-aa8d-d27d761b30ee" alt="Kubecost" height="60" />
+<div style="display: flex; align-items: center;">
+    <img style="margin: 10px;" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="60" />
+    <img style="margin: 10px;" src="https://profilinator.rishav.dev/skills-assets/docker-original-wordmark.svg" alt="Docker" height="60" />
+    <img style="margin: 10px;" src="https://aquasecurity.github.io/trivy/dev/imgs/logo.png" alt="Trivy Scanner" height="60" />
+    <img style="margin: 10px;" src="https://seeklogo.com/images/G/github-actions-logo-031704BDC6-seeklogo.com.png" alt="Github Actions" height="60" />
+    <img style="margin: 10px;" src="https://coralogix.com/wp-content/uploads/2021/06/Argo-CD-Version-Tags-1000X1000.png" alt="Argo CD" height="70" />
+    <img style="margin: 10px;" src="https://profilinator.rishav.dev/skills-assets/terraformio-icon.svg" alt="Terraform" height="60" />
+    <img style="margin: 10px;" src="https://www.sophos.com/sites/default/files/2022-02/aws-logo-white-orange.png" alt="AWS" height="60" />
+    <img style="margin: 10px;" src="https://static-00.iconduck.com/assets.00/amazon-eks-icon-455x512-0zairb3r.png" alt="Amazon EKS" height="60" />
+    <img style="margin: 10px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/2066px-Prometheus_software_logo.svg.png" alt="Prometheus" height="60" />
+    <img style="margin: 10px;" src="https://w7.pngwing.com/pngs/434/923/png-transparent-grafana-hd-logo.png" alt="Grafana" height="60" />
+    <img style="margin: 10px;" src="https://ml.globenewswire.com/Resource/Download/67776224-155c-4a51-aa8d-d27d761b30ee" alt="Kubecost" height="60" />
+</div>
 
 
 This selection of tools and technologies collectively highlights a modern approach to DevOps practices, encompassing development, deployment, security, and monitoring.
