@@ -156,3 +156,13 @@ Kubecost is used for Kubernetes cost allocation and resource management.
   
 
 ## Kubernetes Manifest Repository: [dev-portfolio-manifest](https://github.com/Saurabhkr952/dev-portfolio-manifest)
+
+
+## Work in Progress
+
+**Note: This project is currently a work in progress. Certain sections are being actively developed and will be updated soon. The following enhancements are planned:**
+
+- Detailed instructions on setting up Prometheus and Grafana for monitoring.
+- A guide on setting up Kubecost for Kubernetes cost management.
+- An updated CI/CD pipeline diagram with the latest changes and practices.
+
