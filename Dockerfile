@@ -1,5 +1,5 @@
 # Stage 1: Build React.js application
-FROM node:21-alpine3.17 as build-stage
+FROM node:21-alpine3.18 as build-stage
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install --force
