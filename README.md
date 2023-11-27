@@ -50,7 +50,7 @@ This selection of tools and technologies collectively highlights a modern approa
 
 The diagram below illustrates the **CI/CD pipeline** used in this project:
 
-![CI/CD Pipeline Diagram](https://user-images.githubusercontent.com/32189783/226803395-6f7d3c2c-e72e-48aa-aa2f-f1f8f5bf74a4.jpg)
+![project dev-portfolio](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/53bd5bdd-f2f0-413c-9c75-cf3ae0244f85)
 
 ## Prerequisites
 
