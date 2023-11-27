@@ -4,7 +4,7 @@ This README provides a comprehensive guide on setting up the **Dev Portfolio** p
 
 ## Table of Contents
 - [Overview](#overview)
-- [Continuous Integration and Delivery (CI/CD) Pipeline](#continuous-integration-and-delivery-cicd-pipeline)
+- [Setup Overview](#setup-overview)
 - [Prerequisites](#prerequisites)
 - [Setup Instructions](#setup-instructions)
    - [Provision AWS EKS Cluster](#provision-aws-eks-cluster)
@@ -46,11 +46,13 @@ The **Dev Portfolio** project is built using a variety of tools and technologies
 This selection of tools and technologies collectively highlights a modern approach to DevOps practices, encompassing development, deployment, security, and monitoring.
 
 
-## Continuous Integration and Delivery (CI/CD) Pipeline
+## Setup Overview
 
-The diagram below illustrates the **CI/CD pipeline** used in this project:
 
-![project dev-portfolio](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/53bd5bdd-f2f0-413c-9c75-cf3ae0244f85)
+
+https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/95757ba9-be4e-4d4b-9fc1-7b48009a9819
+
+
 
 ## Prerequisites
 
