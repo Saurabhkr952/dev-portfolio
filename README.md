@@ -166,5 +166,4 @@ Kubecost is used for Kubernetes cost allocation and resource management.
 
 - Detailed instructions on setting up Prometheus and Grafana for monitoring.
 - A guide on setting up Kubecost for Kubernetes cost management.
-- An updated CI/CD pipeline diagram with the latest changes and practices.
 
