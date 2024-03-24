@@ -27,7 +27,7 @@ Before using these Terraform configurations, make sure you have:
 For a smoother experience, consider the following alternatives:
 - Utilize a Linux EC2 instance if available.
 - Use Windows Subsystem for Linux (WSL) to run Linux commands seamlessly on your Windows system.
-- Run a Docker container (Alpine or Ubuntu) and install the required packages within the container environment (as listed above Prerequisites).
+- Run a Docker container (Alpine or Ubuntu) and install the required packages within the container environment. Best Way[Link](https://github.com/Saurabhkr952/dev-portfolio/blob/main/terraform/dev-tools-alpine.md)
 
 ## How to Deploy
 
