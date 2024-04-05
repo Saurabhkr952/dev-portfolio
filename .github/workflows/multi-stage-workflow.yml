@@ -70,6 +70,18 @@ jobs:
           outputFile: results
           frameworks: |
             nsa,mitre
+      - uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: results.sarif
+
+      - name: Checkout code
+        uses: actions/checkout@v4 
+    
+      - uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+
       - name: Upload Kubescape scan results to Github Code Scanning
         uses: github/codeql-action/upload-sarif@v2
         with:
