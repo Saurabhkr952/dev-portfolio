@@ -53,7 +53,6 @@ jobs:
     needs:
       - build
       - scan_upload
-      - kubescape
     steps:
       - uses: actions/checkout@v4
         with: 
