@@ -8,6 +8,7 @@ This README provides a comprehensive guide on setting up the **Dev Portfolio** p
 - [Prerequisites](#prerequisites)
 - [Setup Instructions](#setup-instructions)
    - [Provision AWS EKS Cluster](#provision-aws-eks-cluster)
+   - [Securing Kubernetes Cluster](#securing-kubernetes-cluster)
    - [Configure GitHub Actions Workflow](#configure-github-actions-workflow)
    - [Add Secrets](#add-secrets)
    - [Install Argo CD on EKS](#install-argo-cd-on-eks)
@@ -74,6 +75,24 @@ Before you begin, ensure you have the following:
 4. Run `terraform init` and `terraform apply` to provision the **EKS cluster**.
 
 
+## Securing Kubernetes Cluster
+
+To ensure the security of the Kubernetes cluster for the **Dev Portfolio** project, the following measures have been implemented:
+
+- [x] **Distroless Image Usage:** Utilized distroless images, containing only essential packages, to build Docker images, reducing vulnerability exposure.
+- [x] **Container Runtime Security:** Ensured container runtime security by running containers as non-root users.
+- [x] **Docker Image Signing:** Implemented Docker image signing using COSIGN to guarantee the integrity and authenticity of container images.
+- [x] **Image Scanning:** Integrated Trivy into the CI/CD pipeline for thorough image and container scanning, enhancing security posture.
+- [x] **Security Scanning:** Leveraged Kubescape for comprehensive security scanning based on NSA and MITRE guidelines.
+- [x] **CIS Benchmark Adherence:** Adhered to Kubernetes CIS benchmarks for robust security standards and best practices.
+- [x] **Secrets Management:** Safeguarded Kubernetes secrets using sealed secrets, ensuring encrypted and tamper-proof storage.
+- [ ] **Network Policies:** Implemented network policies to restrict inter-pod communication at the OSI layer 3/4, fortifying the cluster's security posture. (Work in Progress)
+- [ ] **RBAC Implementation:** Managed User & Permissions within Kubernetes using RBAC, ensuring granular control over access and actions. (Work in Progress)
+- [ ] **mTLS Communication:** Established encrypted communication via mutual TLS (mTLS) between pods using service mesh technology, operating at the OSI layer 7, ensuring confidentiality and integrity of data in transit. (Not Implemented)
+- [x] **etcd Security:** Secured the etcd data store, a critical component of Kubernetes, to safeguard cluster configuration and state. (As it is managed Kubernetes cluster so we don't need to worry about etcd. AWS takes responsibility for securing the control plane components, including etcd, as part of the managed service offering.)
+- [ ] **Ingress Security:** Enhanced cluster security by securing ingress traffic using TLS encryption, mitigating the risk of eavesdropping and unauthorized access. (Work in Progress)
+
+
 ### Configure GitHub Actions Workflow
 
 To set up the workflow, follow these steps and modify the appropriate lines in the provided workflow file (`./.github/workflows/multi-stage-workflow.yml`):
@@ -92,17 +111,14 @@ To set up the workflow, follow these steps and modify the appropriate lines in t
    - **Line 42:** Replace `saurabhkr952/dev-portfolio` with the appropriate image reference.
    - **Line 67:** Replace `saurabhkr952@gmail.com` with your GitHub Gmail.
    - **Line 68:** Replace `saurabhkr952` with your GitHub username.
-   - **Line 70:** Replace `saurabhkr952/dev-portfolio` with your docker image at both place.
-                  & also replace `deployment.yaml` with filename.yaml with path.
-   - **Line 77:** Replace `saurabhkr952/dev-portfolio-manifest` with your manifest repository. name.   
-               
+   - **Line 70:** Replace `saurabhkr952/dev-portfolio` with your docker image at both place, and also replace `deployment.yaml` with filename.yaml with path.
+   - **Line 77:** Replace `saurabhkr952/dev-portfolio-manifest` with your manifest repository name.
 
 4. **Slack Workflow Status Job:**
    Navigate to the `slack-workflow-status` job section and make the following changes:
    - **Line 96:** Replace `#general` with your channel name.
 
-
-## Add Secrets
+### Add Secrets
 
 To add the necessary secrets, follow these steps:
 1. Go to the repository settings.
@@ -112,8 +128,8 @@ To add the necessary secrets, follow these steps:
    - `DOCKERHUB_USERNAME`: Your DockerHub username.
    - `DOCKERHUB_TOKEN`: Your DockerHub password.
    - `PAT_TOKEN`: Your GitHub Personal Access Token.
-   - `SLACK_WEBHOOK_URL`: Your Slack webhook URL.    Refer to this [guide](https://devopseasyinitiate.hashnode.dev/how-to-get-slack-webhook-url) on how to obtain the URL.
-     
+   - `SLACK_WEBHOOK_URL`: Your Slack webhook URL. Refer to this [guide](https://devopseasyinitiate.hashnode.dev/how-to-get-slack-webhook-url) on how to obtain the URL.
+
 ### Install Argo CD on EKS
 
 Refer to the [official Argo CD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/) to install Argo CD on your **EKS cluster**.
@@ -166,4 +182,3 @@ Kubecost is used for Kubernetes cost allocation and resource management.
 
 - Detailed instructions on setting up Prometheus and Grafana for monitoring.
 - A guide on setting up Kubecost for Kubernetes cost management.
-
