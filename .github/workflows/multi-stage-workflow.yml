@@ -22,12 +22,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}                          
           password: ${{ secrets.DOCKERHUB_TOKEN }}    
-          
-      - id: docker_meta
-        uses: docker/metadata-action@v4.4.0
-        with:
-          images: ghcr.io/sigstore/sample-honk
-          tags: type=sha,format=long
       
       - name: Build and push
         uses: docker/build-push-action@v4
