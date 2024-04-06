@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:                               # This job builds and pushes the Docker image to Docker Hub.
-    name: Build and Push Docker Image
+    name: Build and Push Docker Image & Sign Container Image 
     runs-on: "ubuntu-20.04"
     steps:
       - name: Set up QEMU
