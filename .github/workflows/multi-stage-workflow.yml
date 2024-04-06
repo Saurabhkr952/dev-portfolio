@@ -28,8 +28,7 @@ jobs:
         id: build-and-push
         with:
           push: true
-          tags: saurabhkr952/dev-portfolio:${{ github.sha }} 
-          platforms: linux/amd64,linux/arm/v7,linux/arm64   
+          tags: saurabhkr952/dev-portfolio:${{ github.sha }}  
       
       # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
       - name: Sign image with a key
