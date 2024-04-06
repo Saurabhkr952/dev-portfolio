@@ -14,6 +14,12 @@ jobs:
     name: Build and Push Docker Image
     runs-on: "ubuntu-20.04"
     steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2.1.0
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2.5.0
+
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3.4.0
 
@@ -29,6 +35,7 @@ jobs:
         with:
           push: true
           tags: saurabhkr952/dev-portfolio:${{ github.sha }}  
+          platforms: linux/amd64,linux/arm/v7,linux/arm64
       
       # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
       - name: Sign image with a key
