@@ -32,9 +32,9 @@ jobs:
       # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
       - name: Sign image with a key
         run: |
-          cosign sign --key ${{ secrets.COSIGN_PRIVATE_KEY }} saurabhkr952/dev-portfolio:${{github.sha }}
+          cosign sign --yes --key env://COSIGN_PRIVATE_KEY saurabhkr952/dev-portfolio:${{ github.sha }}
         env:
-#          COSIGN_PRIVATE_KEY: 
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
 
   scan_upload: #This job checks the vulnerability of the Container Vulnerability Check & Upload it.
