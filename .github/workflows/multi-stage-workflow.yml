@@ -14,6 +14,8 @@ jobs:
     name: Build and Push Docker Image
     runs-on: "ubuntu-20.04"
     steps:
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3.4.0
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -22,9 +24,35 @@ jobs:
       
       - name: Build and push
         uses: docker/build-push-action@v4
+        id: build-and-push
         with:
           push: true
-          tags: saurabhkr952/dev-portfolio:${{ github.sha }}                
+          tags: saurabhkr952/dev-portfolio:${{ github.sha }}       
+      
+      # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
+      - name: Sign image with a key
+        run: |
+          images=""
+          for tag in ${TAGS}; do
+            images+="${tag}@${DIGEST} "
+          done
+          cosign sign --yes --key env://COSIGN_PRIVATE_KEY ${images}
+        env:
+          TAGS: ${{ steps.docker_meta.outputs.tags }}
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+          DIGEST: ${{ steps.build-and-push.outputs.digest }}
+
+      - name: Sign the images with GitHub OIDC Token
+        env:
+          DIGEST: ${{ steps.build-and-push.outputs.digest }}
+          TAGS: ${{ steps.docker_meta.outputs.tags }}
+        run: |
+          images=""
+          for tag in ${TAGS}; do
+            images+="${tag}@${DIGEST} "
+          done
+          cosign sign --yes ${images}
 
   scan_upload: #This job checks the vulnerability of the Container Vulnerability Check & Upload it.
     name: Container Vulnerability Check                           
