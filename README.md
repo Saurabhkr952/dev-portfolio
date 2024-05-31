@@ -21,7 +21,7 @@ This README provides a comprehensive guide on setting up the **Dev Portfolio** p
   - [Monitor Nginx Ingress Controller](#monitor-nginx-ingress-controller) 
   - [Monitor Nodes Metrics]()
   - [Scaling Node using Karpenter]()
-- [Cost Management](#cost-management)()
+- [Cost Management](#cost-management)
 
 
 ## Overview
@@ -103,13 +103,13 @@ Migrating to Karpenter offers `fast scaling` and `cost savings`. Its consolidati
 
 As I've already provisioned infrastructure using cluster auto-scaling groups, here's the [documentation](https://karpenter.sh/docs/getting-started/migrating-from-cas/) detailing the migration process to Karpenter.
 
-Want to see how it scales. check the monitoring section.
+Want to see how it scales. check the [Scaling Node using Karpenter](#scaling-node-using-karpenter) section.
 
 ### Secure Kubernetes API with Rate Limiting
 
 Rate limiting within an NGINX Ingress Controller allows you to manage the flow of traffic or requests to your backend services within specific timeframes. This feature is crucial for preventing abuse, ensuring equitable usage, and safeguarding your services from potential overload due to excessive requests.
 
-To implement rate limiting, follow the instructions provided in the [documentation]((https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#rate-limiting)) by configuring annotations accordingly. These annotations define the rate limiting policies for your Kubernetes environment, ensuring a secure and stable API infrastructure.
+To implement rate limiting, follow the instructions provided in the [documentation](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#rate-limiting) by configuring annotations accordingly. These annotations define the rate limiting policies for your Kubernetes environment, ensuring a secure and stable API infrastructure.
 
 
 ## Securing Kubernetes Cluster
@@ -192,8 +192,8 @@ Load testing is an essential aspect of ensuring the stability and performance of
 
 #### Monitor Nginx Ingress Controller
 To monitor the performance of our nginx-ingress-controller, we utilize Grafana dashboards.
-[grafana-dashboard-1](/assets/1.5k-req-sec-1)
-[grafana-dashboard-2](/assets/1.5k-req-sec-2)
+![grafana-dashboard-1](/assets/1.5k-req-sec-1.png)
+![grafana-dashboard-2](/assets/1.5k-req-sec-2.png)
 
 NOTE: We have already set-up prometheus and grafana & exposing nginx ingress controller in [Scaling Ingress Controller in Kubernetes Cluster to Handle High Traffic](#scaling-ingress-controller-in-kubernetes-cluster-to-handle-high-traffic) section. 
 
@@ -207,7 +207,7 @@ Here's a preview of a Grafana dashboard monitoring the Kubernetes cluster:
  
 
 #### Scaling Node using Karpenter
-https://github.com/Saurabhkr952/dev-portfolio/blob/main/assets/eks-karpenter 
+![scaling-nodes](https://github.com/Saurabhkr952/dev-portfolio/blob/main/assets/eks-karpenter.mp4) 
 
 
 ### Cost Management
