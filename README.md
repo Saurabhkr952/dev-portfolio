@@ -207,7 +207,7 @@ Here's a preview of a Grafana dashboard monitoring the Kubernetes cluster:
  
 
 #### Scaling Node using Karpenter
-![scaling-nodes](https://github.com/Saurabhkr952/dev-portfolio/blob/main/assets/eks-karpenter.mp4) 
+![scaling-nodes](/assets/eks-karpenter.mp4) 
 
 
 ### Cost Management
