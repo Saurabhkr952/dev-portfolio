@@ -7,14 +7,21 @@ This README provides a comprehensive guide on setting up the **Dev Portfolio** p
 - [Setup Overview](#setup-overview)
 - [Prerequisites](#prerequisites)
 - [Setup Instructions](#setup-instructions)
-   - [Provision AWS EKS Cluster](#provision-aws-eks-cluster)
-   - [Securing Kubernetes Cluster](#securing-kubernetes-cluster)
+   - [Provision AWS EKS Cluster using Terraform](#provision-aws-eks-cluster)
+     - [Scaling Ingress Controller in Kubernetes Cluster to Handle High Traffic](#scaling-ingress-controller-in-kubernetes-cluster-to-handle-high-traffic)
+     - [Migrate from Traditional Auto-scaling group to Karpenter](#migrate-from-traditional-auto-scaling-group-to-karpenter)
+     - [Secure Kubernetes API using rate Limiting](#secure-kubernetes-api-with-rate-limiting)
+   - [Secure Kubernetes Cluster](#securing-kubernetes-cluster)
    - [Configure GitHub Actions Workflow](#configure-github-actions-workflow)
    - [Add Secrets](#add-secrets)
    - [Install Argo CD on EKS](#install-argo-cd-on-eks)
 - [Workflow Steps](#workflow-steps)
-- [Monitoring and Visualization](#monitoring-and-visualization)
-- [Cost Management](#cost-management)
+- [Testing & Monitoring](#testing--monitoring)
+  - [Load Testing](#load-testing)
+  - [Monitor Nginx Ingress Controller](#monitor-nginx-ingress-controller) 
+  - [Monitor Nodes Metrics]()
+  - [Scaling Node using Karpenter]()
+- [Cost Management](#cost-management)()
 
 
 ## Overview
@@ -67,12 +74,42 @@ Before you begin, ensure you have the following:
 
 ## Setup Instructions
 
-### Provision AWS EKS Cluster
+### Provision AWS EKS Cluster 
 
 1. Clone the project repository: `git clone https://github.com/Saurabhkr952/dev-portfolio.git`
 2. Navigate to the `terraform` directory: `cd dev-portfolio/terraform`
 3. Modify the Terraform configuration files to match your environment.
 4. Run `terraform init` and `terraform apply` to provision the **EKS cluster**.
+
+### Scaling Ingress Controller in Kubernetes Cluster to Handle High Traffic
+
+Scaling Ingress Controller in Kubernetes Cluster to Handle High Traffic
+When deploying your application in a Kubernetes cluster, having sufficient resources on your nodes is just part of the equation. During traffic spikes, your application can still experience latency issues or timeouts, impacting customer experience. This can happen even if your application pods are scaled properly. The ingress controller, which manages incoming traffic, can become a bottleneck.
+
+To address this, we need to scale the ingress controller based on HTTP requests. As depicted in the diagram below, the left image shows a single ingress controller handling a large amount of traffic, which can lead to latency issues or timeouts for customers. On the right, multiple ingress controller pods handle the traffic more efficiently by scaling based on active requests.
+
+<img src="/assets/scale-ingress-controller.png" alt="nginx-ingress-controller" width="800" height="480" />
+ 
+#### Steps to scale the ingress controller 
+1. Expose Nginx Ingress Controller Metrics: [Docs for installation](https://kdf) & [Expose Metrics using Service Monitors](https://kubernetes.github.io/ingress-nginx/user-guide/monitoring/)
+2. Collect & store metrics using Prometheus: [Install Prometheus & Grafana using HELM chart]()
+3. Use Autoscaler KEDA: [Docs for installation KEDA](https://keda.sh/docs/2.14/deploy/) & apply this manifest [KEDA ScaledObject manifest](https://github.com/Saurabhkr952/dev-portfolio-manifest/blob/main/keda.yaml) 
+ 
+If you want to see how application performs under high traffic with scaling controllers check the `monitoring` section 
+
+### Migrate from Traditional Auto-scaling group to Karpenter
+
+Migrating to Karpenter offers `fast scaling` and `cost savings`. Its consolidation feature efficiently packs workloads onto nodes, minimizing resource waste and maximizing cost-effectiveness. It's a smart move for boosting scalability and optimizing expenses.
+
+As I've already provisioned infrastructure using cluster auto-scaling groups, here's the [documentation](https://karpenter.sh/docs/getting-started/migrating-from-cas/) detailing the migration process to Karpenter.
+
+Want to see how it scales. check the monitoring section.
+
+### Secure Kubernetes API with Rate Limiting
+
+Rate limiting within an NGINX Ingress Controller allows you to manage the flow of traffic or requests to your backend services within specific timeframes. This feature is crucial for preventing abuse, ensuring equitable usage, and safeguarding your services from potential overload due to excessive requests.
+
+To implement rate limiting, follow the instructions provided in the [documentation]((https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#rate-limiting)) by configuring annotations accordingly. These annotations define the rate limiting policies for your Kubernetes environment, ensuring a secure and stable API infrastructure.
 
 
 ## Securing Kubernetes Cluster
@@ -100,11 +137,9 @@ To set up the workflow, follow these steps and modify the appropriate lines in t
 1. **Build and Push Docker Image Job:**
    Navigate to the `build` job section and make the following changes:
    - **Line 17:** Replace `saurabhkr952/dev-portfolio` with your desired image name.
-
 2. **Container Vulnerability Check Job:**
    Navigate to the `scan_upload` job section and make the following change:
    - **Line 29:** Replace `'docker.io/saurabhkr952/gdev-portfolio'` with your image name.
-
 3. **Update Manifest Job:**
    Navigate to the `update_manifest` job section and make the following changes:
    - **Line 62:** Replace `saurabhkr952/dev-portfolio-manifest` with your manifest repository name.
@@ -113,7 +148,6 @@ To set up the workflow, follow these steps and modify the appropriate lines in t
    - **Line 68:** Replace `saurabhkr952` with your GitHub username.
    - **Line 70:** Replace `saurabhkr952/dev-portfolio` with your docker image at both place, and also replace `deployment.yaml` with filename.yaml with path.
    - **Line 77:** Replace `saurabhkr952/dev-portfolio-manifest` with your manifest repository name.
-
 4. **Slack Workflow Status Job:**
    Navigate to the `slack-workflow-status` job section and make the following changes:
    - **Line 96:** Replace `#general` with your channel name.
@@ -145,16 +179,23 @@ Here's how the CI/CD pipeline works:
 5. Following the vulnerability scan, the workflow updates the Kubernetes manifests in the Git repository with the new image tag.
 6. **Argo CD** continuously monitors the Git repository and updates the application version in the Kubernetes cluster.   
 7. Security vulnerabilities are reported and can be reviewed in the security tab.
-   ![Security Vulnerabilities](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/f0ce9f6d-ae90-48ef-9fad-82b3ef3e0e5e.png)
-   
+   ![Security Vulnerabilities](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/f0ce9f6d-ae90-48ef-9fad-82b3ef3e0e5e)   
 8. After the workflow is successfully completed, the status is reflected as shown below:
-   ![cicd pipeline status](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/1634442e-2d86-4593-8e03-ad0e1614a6af)
-    
+   ![cicd pipeline status](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/1634442e-2d86-4593-8e03-ad0e1614a6af)    
 9. Notifications are sent to **Slack** to provide information about the workflow status.
-   ![Workflow Status](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/d4b5490c-b4d9-4607-a999-d371c7c0afc5.png)
+   ![Workflow Status](https://github.com/Saurabhkr952/dev-portfolio/assets/32189783/d4b5490c-b4d9-4607-a999-d371c7c0afc5)
 
 
-## Monitoring and Visualization
+## Testing & Monitoring
+### Load Testing
+Load testing is an essential aspect of ensuring the stability and performance of your Kubernetes cluster. We employ `k6s` for load testing, which allows us to simulate traffic and analyze how our system responds under high loads. By scripting test scenarios with k6s, we can assess the scalability and resilience of our Kubernetes setup.
+
+#### Monitor Nginx Ingress Controller
+To monitor the performance of our nginx-ingress-controller, we utilize Grafana dashboards.
+[grafana-dashboard-1](/assets/1.5k-req-sec-1)
+[grafana-dashboard-2](/assets/1.5k-req-sec-2)
+
+NOTE: We have already set-up prometheus and grafana & exposing nginx ingress controller in [Scaling Ingress Controller in Kubernetes Cluster to Handle High Traffic](#scaling-ingress-controller-in-kubernetes-cluster-to-handle-high-traffic) section. 
 
 ### For monitoring and visualization, the following tools are utilized:
 
@@ -163,7 +204,10 @@ Here's how the CI/CD pipeline works:
 Here's a preview of a Grafana dashboard monitoring the Kubernetes cluster:
 
 ![Grafana Dashboard](assets/grafana-dashboard.gif)
+ 
 
+#### Scaling Node using Karpenter
+https://github.com/Saurabhkr952/dev-portfolio/blob/main/assets/eks-karpenter 
 
 
 ### Cost Management
