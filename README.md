@@ -190,6 +190,7 @@ Here's how the CI/CD pipeline works:
 ### Load Testing
 Load testing is an essential aspect of ensuring the stability and performance of your Kubernetes cluster. We employ `k6s` for load testing, which allows us to simulate traffic and analyze how our system responds under high loads. By scripting test scenarios with k6s, we can assess the scalability and resilience of our Kubernetes setup.
 
+
 #### Monitor Nginx Ingress Controller
 To monitor the performance of our nginx-ingress-controller, we utilize Grafana dashboards.
 ![grafana-dashboard-1](/assets/1.5k-req-sec-1.png)
