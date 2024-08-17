@@ -126,13 +126,13 @@ To ensure the security of the Kubernetes cluster for the **Dev Portfolio** proje
 - [x] **CIS Benchmark Adherence:** Adhered to Kubernetes CIS benchmarks for robust security standards and best practices.
 - [x] **Secrets Management:** Safeguarded Kubernetes secrets using sealed secrets, ensuring encrypted and tamper-proof storage.
 - [x] **Network Policies:** Not needed.
-- [ ] **RBAC Implementation:** Managed User & Permissions within Kubernetes using RBAC, ensuring granular control over access and actions. 
+- [x] **RBAC Implementation:** Managed User & Permissions within Kubernetes using RBAC, ensuring granular control over access and actions. 
 - [ ] **mTLS Communication:** Not needed. 
 - [x] **etcd Security:** Secured the etcd data store, a critical component of Kubernetes, to safeguard cluster configuration and state. (As it is managed Kubernetes cluster so we don't need to worry about etcd. AWS takes responsibility for securing the control plane components, including etcd, as part of the managed service offering.)
 
 ### Configure HTTPS with TLS Using Let's Encrypt
 - To ensure secure traffic to our application, we use Cert-Manager, a popular Kubernetes add-on that automates the management and renewal of TLS certificates. This setup guarantees that our application remains accessible over HTTPS with certificates that automatically renew every three months. 
-- If you want to know more about how to configure HTTPS checkout this repo: [dev-portfolio-manifests/configure-https](https://github.com/saurabhkr952/dev-portfolio-manifests)
+- If you want to know more about how to configure HTTPS checkout this repo: [dev-portfolio-manifests/configure-https](https://github.com/Saurabhkr952/dev-portfolio-manifest/tree/main/configure-https)
 
 ![cert-manger](/assets/cert-manger-lets-encrypt.png)
 
