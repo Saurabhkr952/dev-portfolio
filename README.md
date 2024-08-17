@@ -125,7 +125,7 @@ To ensure the security of the Kubernetes cluster for the **Dev Portfolio** proje
 - [x] **Security Scanning:** Leveraged Kubescape for comprehensive security scanning based on NSA and MITRE guidelines.
 - [x] **CIS Benchmark Adherence:** Adhered to Kubernetes CIS benchmarks for robust security standards and best practices.
 - [x] **Secrets Management:** Safeguarded Kubernetes secrets using sealed secrets, ensuring encrypted and tamper-proof storage.
-- [ ] **Network Policies:** Not needed.
+- [x] **Network Policies:** Not needed.
 - [ ] **RBAC Implementation:** Managed User & Permissions within Kubernetes using RBAC, ensuring granular control over access and actions. 
 - [ ] **mTLS Communication:** Not needed. 
 - [x] **etcd Security:** Secured the etcd data store, a critical component of Kubernetes, to safeguard cluster configuration and state. (As it is managed Kubernetes cluster so we don't need to worry about etcd. AWS takes responsibility for securing the control plane components, including etcd, as part of the managed service offering.)
@@ -214,7 +214,7 @@ Here's a preview of a Grafana dashboard monitoring the Kubernetes cluster:
  
 
 #### Scaling Node using Karpenter
-![Scaling-Nodes](/assets/eks-karpenter.mp4) 
+![Scaling-Nodes](/assets/eks-karpenter.gif) 
 
 
 ### Cost Management
