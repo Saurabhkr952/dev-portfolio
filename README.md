@@ -12,6 +12,8 @@ This README provides a comprehensive guide on setting up the **Dev Portfolio** p
      - [Migrate from Traditional Auto-scaling group to Karpenter](#migrate-from-traditional-auto-scaling-group-to-karpenter)
      - [Secure Kubernetes API using rate Limiting](#secure-kubernetes-api-with-rate-limiting)
    - [Secure Kubernetes Cluster](#securing-kubernetes-cluster)
+     - [Security Measures Implemented](#securing-kubernetes-cluster) Distroless Image Usage, Container Runtime Security, Docker Image Signing, Image Scanning, Security Scanning, CIS Benchmark Adherence, Secrets Management, Network Policies, RBAC Implementation, mTLS Communication, etcd Security
+     - [Configure HTTPS with TLS Using Let's Encrypt](#configure-https-with-tls-using-lets-encrypt) 
    - [Configure GitHub Actions Workflow](#configure-github-actions-workflow)
    - [Add Secrets](#add-secrets)
    - [Install Argo CD on EKS](#install-argo-cd-on-eks)
@@ -123,12 +125,16 @@ To ensure the security of the Kubernetes cluster for the **Dev Portfolio** proje
 - [x] **Security Scanning:** Leveraged Kubescape for comprehensive security scanning based on NSA and MITRE guidelines.
 - [x] **CIS Benchmark Adherence:** Adhered to Kubernetes CIS benchmarks for robust security standards and best practices.
 - [x] **Secrets Management:** Safeguarded Kubernetes secrets using sealed secrets, ensuring encrypted and tamper-proof storage.
-- [ ] **Network Policies:** Implemented network policies to restrict inter-pod communication at the OSI layer 3/4, fortifying the cluster's security posture. (Work in Progress)
-- [ ] **RBAC Implementation:** Managed User & Permissions within Kubernetes using RBAC, ensuring granular control over access and actions. (Work in Progress)
-- [ ] **mTLS Communication:** Established encrypted communication via mutual TLS (mTLS) between pods using service mesh technology, operating at the OSI layer 7, ensuring confidentiality and integrity of data in transit. (Not Implemented)
+- [ ] **Network Policies:** Not needed.
+- [ ] **RBAC Implementation:** Managed User & Permissions within Kubernetes using RBAC, ensuring granular control over access and actions. 
+- [ ] **mTLS Communication:** Not needed. 
 - [x] **etcd Security:** Secured the etcd data store, a critical component of Kubernetes, to safeguard cluster configuration and state. (As it is managed Kubernetes cluster so we don't need to worry about etcd. AWS takes responsibility for securing the control plane components, including etcd, as part of the managed service offering.)
-- [ ] **Ingress Security:** Enhanced cluster security by securing ingress traffic using TLS encryption, mitigating the risk of eavesdropping and unauthorized access. (Work in Progress)
 
+### Configure HTTPS with TLS Using Let's Encrypt
+- To ensure secure traffic to our application, we use Cert-Manager, a popular Kubernetes add-on that automates the management and renewal of TLS certificates. This setup guarantees that our application remains accessible over HTTPS with certificates that automatically renew every three months. 
+- If you want to know more about how to configure HTTPS checkout this repo: [dev-portfolio-manifests/configure-https](https://github.com/saurabhkr952/dev-portfolio-manifests)
+
+![cert-manger](/assets/cert-manger-lets-encrypt.png)
 
 ### Configure GitHub Actions Workflow
 
@@ -139,7 +145,7 @@ To set up the workflow, follow these steps and modify the appropriate lines in t
    - **Line 17:** Replace `saurabhkr952/dev-portfolio` with your desired image name.
 2. **Container Vulnerability Check Job:**
    Navigate to the `scan_upload` job section and make the following change:
-   - **Line 29:** Replace `'docker.io/saurabhkr952/gdev-portfolio'` with your image name.
+   - **Line 29:** Replace `'docker.io/saurabhkr952/dev-portfolio'` with your image name.
 3. **Update Manifest Job:**
    Navigate to the `update_manifest` job section and make the following changes:
    - **Line 62:** Replace `saurabhkr952/dev-portfolio-manifest` with your manifest repository name.
@@ -208,7 +214,7 @@ Here's a preview of a Grafana dashboard monitoring the Kubernetes cluster:
  
 
 #### Scaling Node using Karpenter
-![Scaling-Nodes](https://github.com/Saurabhkr952/dev-portfolio/assets/eks-karpenter) 
+![Scaling-Nodes](/assets/eks-karpenter.mp4) 
 
 
 ### Cost Management
@@ -220,10 +226,3 @@ Kubecost is used for Kubernetes cost allocation and resource management.
 
 ## Kubernetes Manifest Repository: [dev-portfolio-manifest](https://github.com/Saurabhkr952/dev-portfolio-manifest)
 
-
-## Work in Progress
-
-**Note: This project is currently a work in progress. Certain sections are being actively developed and will be updated soon. The following enhancements are planned:**
-
-- Detailed instructions on setting up Prometheus and Grafana for monitoring.
-- A guide on setting up Kubecost for Kubernetes cost management.
