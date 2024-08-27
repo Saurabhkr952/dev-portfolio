@@ -27,14 +27,20 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}                          
-          password: ${{ secrets.DOCKERHUB_TOKEN }}    
+          password: ${{ secrets.DOCKERHUB_TOKEN }}   
+      
+      - id: docker_meta             # used to generate image version tag
+        uses: docker/metadata-action@v5
+        with:
+          images: saurabhkr952/dev-portfolio
+          tags: type=sha,format=short   
       
       - name: Build and push
         uses: docker/build-push-action@v6
         id: build-and-push
         with:
           push: true
-          tags: saurabhkr952/dev-portfolio:${{ github.sha }}  
+          tags: ${{ steps.docker_meta.outputs.tags }}
           platforms: linux/amd64,linux/arm64
       
       # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
@@ -47,7 +53,7 @@ jobs:
           done
           cosign sign --yes --key env://COSIGN_PRIVATE_KEY ${images}
         env:
-          TAGS: saurabhkr952/dev-portfolio:${{ github.sha }} 
+          TAGS: ${{ steps.docker_meta.outputs.tags }}
           COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
           DIGEST: ${{ steps.build-and-push.outputs.digest }}
