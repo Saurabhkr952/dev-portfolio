@@ -40,7 +40,7 @@ jobs:
         id: build-and-push
         with:
           push: true
-          tags: ${{ steps.docker_meta.outputs.tags }}
+          tags: saurabhkr952/dev-portfolio:${{ github.sha }}
           platforms: linux/amd64,linux/arm64
       
       # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
@@ -53,7 +53,7 @@ jobs:
           done
           cosign sign --yes --key env://COSIGN_PRIVATE_KEY ${images}
         env:
-          TAGS: ${{ steps.docker_meta.outputs.tags }}
+          TAGS: saurabhkr952/dev-portfolio:${{ github.sha }}
           COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
           DIGEST: ${{ steps.build-and-push.outputs.digest }}
