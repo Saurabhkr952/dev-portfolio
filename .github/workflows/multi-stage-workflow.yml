@@ -38,10 +38,16 @@ jobs:
           platforms: linux/amd64,linux/arm64
       
       # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
+      # temp cosign sign --yes --key env://COSIGN_PRIVATE_KEY saurabhkr952/dev-portfolio@sha256:${{ github.sha }}
       - name: Sign image with a key
         run: |
-          cosign sign --yes --key env://COSIGN_PRIVATE_KEY saurabhkr952/dev-portfolio@sha256:${{ github.sha }}
+          images=""
+          for tag in ${TAGS}; do
+            images+="${tag}@${DIGEST} "
+          done
+          cosign sign --yes --key env://COSIGN_PRIVATE_KEY ${images}
         env:
+          TAGS: ${{ github.sha }}
           COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
           DIGEST: ${{ steps.build-and-push.outputs.digest }}
